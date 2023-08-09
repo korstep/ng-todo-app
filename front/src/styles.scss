@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@import "src/scss/styles";
+
+svg {
+  width: 16px;
+  height: 16px;
+  overflow: visible;
+  opacity: 1;
+  z-index: 1;
+  fill: $text-muted;
+  cursor: pointer;
+}
+
+h1 {
+  @include heading-h1;
+}
+h2 {
+  @include heading-h2;
+}
+div,
+span,
+p {
+  @include text;
+}
