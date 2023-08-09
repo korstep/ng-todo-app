@@ -1,0 +1,13 @@
+@import "styles";
+.tasks {
+  &__button {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    color: $text-muted;
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid #ebebeb;
+    border-radius: 8px;
+  }
+}
