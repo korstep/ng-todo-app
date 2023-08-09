@@ -1,0 +1,20 @@
+@import "styles";
+
+.tasks {
+  padding-bottom: 15px;
+  border-bottom: 1px solid $background-common;
+  display: flex;
+  flex-direction: column;
+  &__task {
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    cursor: pointer;
+  }
+}
+.paragraph {
+  @include text-s;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
