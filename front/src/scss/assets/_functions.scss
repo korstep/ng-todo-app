@@ -1,0 +1,5 @@
+@function dynamic-calc($gap, $percentage) {
+  @return calc(
+    $percentage - ($gap * (100% / $percentage - 1) / (100% / $percentage))
+  );
+}
