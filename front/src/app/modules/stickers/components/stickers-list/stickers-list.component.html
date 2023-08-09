@@ -1,0 +1,10 @@
+<div class="stickers">
+  <div class="stickers__body">
+    <app-sticker
+      class="sticker"
+      *ngFor="let stick of stickers"
+      [sticker]="stick"
+    ></app-sticker>
+    <div class="stickers__add">+</div>
+  </div>
+</div>

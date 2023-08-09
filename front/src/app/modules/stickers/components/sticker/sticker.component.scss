@@ -1,0 +1,32 @@
+@import "styles";
+
+.sticky {
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  background-color: ghostwhite;
+  cursor: pointer;
+
+  &__body {
+    aspect-ratio: 1;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+  }
+
+  &__delete {
+    transition: opacity 0.5s ease-in;
+    align-self: center;
+    margin-top: auto;
+    width: 32px;
+    height: 32px;
+    opacity: 0;
+  }
+}
+
+.sticky:hover {
+  .sticky__delete {
+    opacity: 1;
+  }
+}
