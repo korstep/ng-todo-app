@@ -1,0 +1,27 @@
+<form class="add-list">
+  <div class="add-list__input-container">
+    <app-list-color [color]="selectedColor"></app-list-color>
+    <input
+      class="add-list__input"
+      type="text"
+      id="title"
+      name="title"
+      placeholder="List Name"
+      required
+    />
+  </div>
+  <ul class="add-list__colors">
+    <li
+      class="add-list__color-wrapper"
+      *ngFor="let item of colors"
+      [ngClass]="{
+        'add-list__color-wrapper_selected': item === selectedColor
+      }"
+    >
+      <app-list-color
+        (click)="selectColor(item)"
+        [color]="item"
+      ></app-list-color>
+    </li>
+  </ul>
+</form>
