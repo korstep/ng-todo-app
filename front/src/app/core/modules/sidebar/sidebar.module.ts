@@ -5,6 +5,8 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { SidebarComponent } from './sidebar.component';
 import { AddListComponent } from './components/add-list/add-list.component';
 import { ListModule } from '@ui';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,6 @@ import { ListModule } from '@ui';
     AddListComponent,
   ],
   exports: [SidebarComponent],
-  imports: [CommonModule, ListModule],
+  imports: [CommonModule, HttpClientModule, FormsModule, ListModule],
 })
 export class SidebarModule {}

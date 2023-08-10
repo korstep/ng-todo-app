@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { ListsService } from 'src/app/core/services/lists.service';
 
 @Component({
   selector: 'app-add-list',
@@ -6,8 +7,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./add-list.component.scss'],
 })
 export class AddListComponent {
-  @Output() colorSelected = new EventEmitter<string>();
-  colors: string[] = [
+  constructor(private listsService: ListsService) {}
+  allowedColors: string[] = [
     '#ff6b6b',
     '#da77f2',
     '#9775fa',
@@ -17,10 +18,26 @@ export class AddListComponent {
     '#ffd43b',
     '#ff922b',
   ];
-  selectedColor: string = this.colors.length
-    ? this.colors[Math.floor(Math.random() * this.colors.length)]
+  listTitle: string = '';
+  selectedColor: string = this.allowedColors.length
+    ? this.allowedColors[Math.floor(Math.random() * this.allowedColors.length)]
     : '';
   selectColor(color: string): void {
     this.selectedColor = color;
+  }
+  addList() {
+    if (!this.listTitle || this.listTitle.length >= 16) {
+      return;
+    }
+
+    this.listsService
+      .addList({
+        title: this.listTitle,
+        color: this.selectedColor,
+      })
+      .subscribe((obj) => {
+        this.listsService.getAll();
+        console.log(obj);
+      });
   }
 }
