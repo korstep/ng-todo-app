@@ -3,6 +3,7 @@
     <h2 class="sticky__title">{{ sticker.title }}</h2>
     <p class="sticky__description">{{ sticker.description }}</p>
     <svg
+      (click)="handleDeleteSticker()"
       class="sticky__delete"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 -960 960 960"

@@ -2,7 +2,7 @@
   <div class="stickers__body">
     <app-sticker
       class="sticker"
-      *ngFor="let stick of stickers"
+      *ngFor="let stick of stickers$ | async"
       [sticker]="stick"
     ></app-sticker>
     <div class="stickers__add">+</div>

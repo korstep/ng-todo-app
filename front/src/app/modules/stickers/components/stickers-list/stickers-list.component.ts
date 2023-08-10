@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StickyWallService } from '../../services/stickers.service';
+import { StickersService } from '../../services/stickers.service';
 import { ISticker } from 'src/app/core/interfaces/sticker.interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-stickers-list',
@@ -8,11 +9,14 @@ import { ISticker } from 'src/app/core/interfaces/sticker.interface';
   styleUrls: ['./stickers-list.component.scss'],
 })
 export class StickersListComponent implements OnInit {
-  constructor(private stickyService: StickyWallService) {}
-
-  stickers: ISticker[] = [];
+  stickers$!: Observable<ISticker[]>;
+  constructor(private stickersService: StickersService) {}
 
   ngOnInit() {
-    this.stickers = this.stickyService.getAll();
+    this.stickers$ = this.stickersService.getAll();
+
+    this.stickersService.stickersChanges$.subscribe(() => {
+      this.stickers$ = this.stickersService.getAll();
+    });
   }
 }
