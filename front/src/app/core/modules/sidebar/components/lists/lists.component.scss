@@ -5,10 +5,16 @@
   border-bottom: 1px solid #ebebeb;
   display: flex;
   flex-direction: column;
-  &__list,
+  &__list {
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    cursor: pointer;
+  }
   &__add {
     border-radius: 8px;
-    padding: 15px/2 15px;
+    padding: 10px 15px;
     display: flex;
     align-items: center;
     column-gap: calc(15px / 2);
