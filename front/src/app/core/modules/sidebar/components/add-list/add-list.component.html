@@ -1,7 +1,8 @@
-<form class="add-list">
+<div class="add-list">
   <div class="add-list__input-container">
     <app-list-color [color]="selectedColor"></app-list-color>
     <input
+      [(ngModel)]="listTitle"
       class="add-list__input"
       type="text"
       id="title"
@@ -13,7 +14,7 @@
   <ul class="add-list__colors">
     <li
       class="add-list__color-wrapper"
-      *ngFor="let item of colors"
+      *ngFor="let item of allowedColors"
       [ngClass]="{
         'add-list__color-wrapper_selected': item === selectedColor
       }"
@@ -24,4 +25,5 @@
       ></app-list-color>
     </li>
   </ul>
-</form>
+  <button (click)="addList()" class="add-list__button">Add New List</button>
+</div>
