@@ -15,7 +15,7 @@ export class ListsService {
     return this.listsChangesSubject.asObservable();
   }
 
-  addList(list: IList): Observable<any> {
+  addList(list: Omit<IList, 'id'>): Observable<any> {
     return this.http.post('http://localhost:3000/lists', list).pipe(
       tap(() => {
         this.listsChangesSubject.next();
