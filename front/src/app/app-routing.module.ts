@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticatedLayoutComponent } from './layouts/authenticated-layout/authenticated-layout.component';
-import { UnauthenticatedLayoutComponent } from './layouts/unauthenticated-layout/unauthenticated-layout.component';
+import { AuthenticatedLayoutComponent } from '@layouts/authenticated-layout/authenticated-layout.component';
+import { UnauthenticatedLayoutComponent } from '@layouts/unauthenticated-layout/unauthenticated-layout.component';
 
 const routes: Routes = [
   // App routes
