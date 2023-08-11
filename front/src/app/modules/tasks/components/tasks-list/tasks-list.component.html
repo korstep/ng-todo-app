@@ -7,5 +7,5 @@
     </svg>
     Add New Task
   </button>
-  <app-task *ngFor="let item of tasks" [task]="item"></app-task>
+  <app-task *ngFor="let item of tasks$ | async" [task]="item"></app-task>
 </div>
