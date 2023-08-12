@@ -10,6 +10,7 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./lists.component.scss'],
 })
 export class ListsComponent implements OnInit {
+  title: string = 'List';
   lists$!: Observable<IList[]>;
   isOpen: boolean = false;
 
