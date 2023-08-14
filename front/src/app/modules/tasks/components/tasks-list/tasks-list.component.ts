@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TasksService } from '../../services/tasks.service';
 import { ITask } from 'src/app/core/interfaces/task.interface';
-import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { ListsService } from 'src/app/core/services/lists.service';
 
 @Component({
   selector: 'app-tasks-list',
@@ -9,14 +10,15 @@ import { Observable } from 'rxjs';
   styleUrls: ['./tasks-list.component.scss'],
 })
 export class TasksListComponent implements OnInit {
-  tasks$!: Observable<ITask[]>;
-  constructor(private tasksService: TasksService) {}
+  tasks: ITask[] = [];
+  constructor(
+    private route: ActivatedRoute,
+    private tasksService: TasksService
+  ) {}
 
   ngOnInit() {
-    this.tasks$ = this.tasksService.getAll();
-
-    this.tasksService.tasksChanges$.subscribe(() => {
-      this.tasks$ = this.tasksService.getAll();
+    this.tasksService.getAll().subscribe((tasks) => {
+      this.tasks = tasks;
     });
   }
 }
