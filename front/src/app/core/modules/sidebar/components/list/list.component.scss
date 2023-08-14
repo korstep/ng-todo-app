@@ -1,0 +1,16 @@
+@import "styles";
+:host {
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+  cursor: pointer;
+}
+
+.count {
+  @include text-s;
+  background-color: $background-common;
+  border-radius: 4px;
+  margin-left: auto;
+  padding: 0 8px;
+}

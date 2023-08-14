@@ -1,9 +1,6 @@
 <div class="lists">
   <span class="paragraph">LISTS</span>
-  <div *ngFor="let item of lists" class="lists__list">
-    <app-list-color [color]="item.color" class="lists__color"></app-list-color>
-    <span class="lists__title">{{ item.title }}</span>
-  </div>
+  <app-list *ngFor="let item of lists" [list]="item"> </app-list>
   <app-add-button (click)="toggleAddList()" [title]="title"> </app-add-button>
   <app-add-list *ngIf="isOpen"></app-add-list>
 </div>

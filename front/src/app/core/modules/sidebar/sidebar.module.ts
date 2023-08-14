@@ -7,6 +7,7 @@ import { AddListComponent } from './components/add-list/add-list.component';
 import { ListModule, ButtonModule } from '@ui';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ListComponent } from './components/list/list.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { FormsModule } from '@angular/forms';
     TasksComponent,
     SidebarComponent,
     AddListComponent,
+    ListComponent,
   ],
   exports: [SidebarComponent],
   imports: [
