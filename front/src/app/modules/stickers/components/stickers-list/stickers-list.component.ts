@@ -9,14 +9,12 @@ import { Observable } from 'rxjs';
   styleUrls: ['./stickers-list.component.scss'],
 })
 export class StickersListComponent implements OnInit {
-  stickers$!: Observable<ISticker[]>;
+  stickers$: ISticker[] = [];
   constructor(private stickersService: StickersService) {}
 
   ngOnInit() {
-    this.stickers$ = this.stickersService.getAll();
-
-    this.stickersService.stickersChanges$.subscribe(() => {
-      this.stickers$ = this.stickersService.getAll();
+    this.stickersService.getAll().subscribe((stickers) => {
+      this.stickers$ = stickers;
     });
   }
 }

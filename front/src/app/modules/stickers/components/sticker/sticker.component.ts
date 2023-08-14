@@ -11,17 +11,9 @@ import { Subscription } from 'rxjs';
 export class StickerComponent {
   @Input()
   sticker!: ISticker;
-  private subscription!: Subscription;
   constructor(private stickersService: StickersService) {}
 
   handleDeleteSticker(): void {
-    this.subscription = this.stickersService
-      .deleteSticker(this.sticker)
-      .subscribe(() => {});
-  }
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.stickersService.deleteSticker(this.sticker);
   }
 }
