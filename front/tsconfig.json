@@ -21,6 +21,7 @@
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
     "paths": {
+      "@interfaces/*": ["src/app/core/interfaces/*"],
       "@layouts/*": ["src/app/layouts/*"],
       "@ui": ["src/app/shared/ui"]
     }
