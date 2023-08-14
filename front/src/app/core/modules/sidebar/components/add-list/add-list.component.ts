@@ -26,18 +26,13 @@ export class AddListComponent {
     this.selectedColor = color;
   }
   addList() {
-    if (!this.listTitle || this.listTitle.length >= 16) {
+    if (!this.listTitle) {
       return;
     }
 
-    this.listsService
-      .addList({
-        title: this.listTitle,
-        color: this.selectedColor,
-      })
-      .subscribe((obj) => {
-        this.listsService.getAll();
-        console.log(obj);
-      });
+    this.listsService.addList({
+      title: this.listTitle,
+      color: this.selectedColor,
+    });
   }
 }

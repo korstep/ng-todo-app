@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ListsService } from 'src/app/core/services/lists.service';
 import { IList } from 'src/app/core/interfaces/list.interface';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-lists',
@@ -11,16 +9,15 @@ import { switchMap } from 'rxjs/operators';
 })
 export class ListsComponent implements OnInit {
   title: string = 'List';
-  lists$!: Observable<IList[]>;
+  lists: IList[] = [];
+
   isOpen: boolean = false;
 
   constructor(private listsService: ListsService) {}
 
   ngOnInit() {
-    this.lists$ = this.listsService.getAll();
-
-    this.listsService.listsChanges$.subscribe(() => {
-      this.lists$ = this.listsService.getAll();
+    this.listsService.getAll().subscribe((lists): void => {
+      this.lists = lists;
     });
   }
 
