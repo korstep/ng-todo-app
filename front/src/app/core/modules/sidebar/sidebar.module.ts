@@ -4,7 +4,7 @@ import { ListsComponent } from './components/lists/lists.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { SidebarComponent } from './sidebar.component';
 import { AddListComponent } from './components/add-list/add-list.component';
-import { ListModule, ButtonModule } from '@ui';
+import { ListModule, ButtonModule, TasksModule } from '@ui';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ListComponent } from './components/list/list.component';
@@ -24,6 +24,7 @@ import { ListComponent } from './components/list/list.component';
     FormsModule,
     ListModule,
     ButtonModule,
+    TasksModule,
   ],
 })
 export class SidebarModule {}
