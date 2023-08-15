@@ -17,8 +17,6 @@ h1 {
 h2 {
   @include heading-h2;
 }
-div,
-span,
-p {
+div {
   @include text;
 }
