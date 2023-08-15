@@ -1,0 +1,9 @@
+@import "styles";
+:host {
+  margin-left: auto;
+  @include text-s;
+  background-color: $background-common;
+  border-radius: 4px;
+  margin-left: auto;
+  padding: 0.1em 0.9em;
+}
