@@ -1,3 +1,5 @@
-<app-list-color [color]="list.color" class="color"></app-list-color>
-<span class="title">{{ list.title }}</span>
-<app-tasks-count [count]="tasksCount"></app-tasks-count>
+<div class="list" (click)="navigateToList()">
+  <app-list-color [color]="list.color" class="list__color"></app-list-color>
+  <span class="list__title">{{ list.title }}</span>
+  <app-tasks-count [count]="tasksCount"></app-tasks-count>
+</div>

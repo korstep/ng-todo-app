@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IList } from '@interfaces/list.interface';
 import { TasksService } from 'src/app/modules/tasks/services/tasks.service';
 
@@ -8,7 +9,7 @@ import { TasksService } from 'src/app/modules/tasks/services/tasks.service';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  constructor(private tasksService: TasksService) {}
+  constructor(private tasksService: TasksService, private router: Router) {}
   @Input() list!: IList;
   tasksCount: number = 0;
   ngOnInit() {
@@ -17,5 +18,8 @@ export class ListComponent implements OnInit {
         (task) => task.list.id === this.list.id
       ).length;
     });
+  }
+  navigateToList() {
+    this.router.navigate(['/tasks', this.list.id]);
   }
 }
