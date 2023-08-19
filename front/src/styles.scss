@@ -20,3 +20,7 @@ h2 {
 div {
   @include text;
 }
+
+a {
+  color: $text;
+}
