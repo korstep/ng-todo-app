@@ -24,3 +24,6 @@ div {
 a {
   color: $text;
 }
+router-outlet {
+  display: none;
+}
