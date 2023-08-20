@@ -1,0 +1,16 @@
+<div class="input-email">
+  <input
+    [ngClass]="{
+      'input-email__input_error':
+        (emailControl.touched && emailControl.invalid) ||
+        (submitted && emailControl.untouched && emailControl.invalid)
+    }"
+    class="input-email__input"
+    name="email"
+    id="email"
+    type="email"
+    inputmode="email"
+    [placeholder]="placeholder"
+    [formControl]="emailControl"
+  />
+</div>
