@@ -1,0 +1,15 @@
+<app-auth-section-layout [title]="title">
+  <ng-container body>
+    <p>
+      With only the features you need, Organic Mind is customized for
+      individuals seeking a stress-free way to stay focused on their goals,
+      projects, and tasks.
+    </p>
+    <button class="get-started__button" (click)="redirectToSignUp()">
+      Get Started
+    </button>
+  </ng-container>
+  <ng-container footer>
+    <a routerLink="/login">Already have an account? Sign in</a>
+  </ng-container>
+</app-auth-section-layout>

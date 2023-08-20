@@ -1,0 +1,12 @@
+@import "styles";
+:host {
+  flex: 1;
+}
+.get-started__button {
+  width: 100%;
+}
+.get-started {
+  &__button {
+    @include accept-button;
+  }
+}
