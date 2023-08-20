@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthenticatedLayoutComponent } from '@layouts/authenticated-layout/authenticated-layout.component';
-import { UnauthenticatedLayoutComponent } from '@layouts/unauthenticated-layout/unauthenticated-layout.component';
 
 const routes: Routes = [
+  // AUTH
+  {
+    path: '',
+    loadChildren: () =>
+      import('./modules/auth/auth.module').then((m) => m.AuthModule),
+  },
   // App routes
   {
     path: '',
@@ -28,7 +33,6 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '', component: UnauthenticatedLayoutComponent, children: [] },
 ];
 
 @NgModule({
