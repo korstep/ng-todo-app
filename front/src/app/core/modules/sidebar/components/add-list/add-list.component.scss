@@ -1,3 +1,4 @@
+@import "styles";
 .add-list {
   display: flex;
   flex-direction: column;
@@ -36,11 +37,8 @@
     padding: calc(7.5px - 1px);
   }
   &__button {
+    @include accept-button;
     align-self: center;
     width: 100%;
-    background-color: #ffd43b;
-    border-radius: 8px;
-    padding-top: 10px;
-    padding-bottom: 10px;
   }
 }
