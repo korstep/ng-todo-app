@@ -1,0 +1,14 @@
+@import "styles";
+:host {
+  flex: 1;
+}
+
+.signin {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3.75vh;
+  width: 100%;
+  &__button {
+    @include accept-button;
+  }
+}

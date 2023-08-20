@@ -1,0 +1,16 @@
+<app-auth-section-layout [title]="title">
+  <form class="signin" [formGroup]="signInForm" (ngSubmit)="onSubmit()" body>
+    <app-input-email
+      [emailControl]="emailFormControl"
+      [submitted]="submitted"
+    ></app-input-email>
+    <app-input-password
+      [passwordControl]="passwordControl"
+      [submitted]="submitted"
+    ></app-input-password>
+    <button class="signin__button" type="submit">Sign in</button>
+  </form>
+  <ng-container footer>
+    <a routerLink="/signup">Don't have an account? Sign up</a>
+  </ng-container>
+</app-auth-section-layout>
