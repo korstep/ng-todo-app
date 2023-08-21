@@ -10,6 +10,7 @@ import {
 } from 'rxjs';
 import { IList } from 'src/app/core/interfaces/list.interface';
 import { HttpClient } from '@angular/common/http';
+import { BACKEND_URl } from '@constants';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +26,7 @@ export class ListsService {
 
   addList(list: Omit<IList, 'id'>): void {
     this.http
-      .post('http://localhost:3000/lists', list)
+      .post(`${BACKEND_URl}/lists`, list)
       .pipe(
         tap(() => {
           this.fetchLists();
@@ -45,7 +46,7 @@ export class ListsService {
 
   private fetchLists(): void {
     this.http
-      .get<IList[]>('http://localhost:3000/lists')
+      .get<IList[]>(`${BACKEND_URl}/lists`)
       .pipe(
         retry({
           count: 2,

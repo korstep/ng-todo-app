@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, retry, of } from 'rxjs';
 import { catchError, take, tap } from 'rxjs/operators';
 import { ISticker } from 'src/app/core/interfaces/sticker.interface';
+import { BACKEND_URl } from '@constants';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,7 @@ export class StickersService {
 
   addSticker(sticker: ISticker): void {
     this.http
-      .post('http://localhost:3000/stickers', sticker)
+      .post(`${BACKEND_URl}/stickers`, sticker)
       .pipe(
         tap(() => {
           this.fetchData();
@@ -37,7 +38,7 @@ export class StickersService {
   }
   deleteSticker(sticker: ISticker): void {
     this.http
-      .delete(`http://localhost:3000/stickers/${sticker.id}`)
+      .delete(`${BACKEND_URl}/stickers/${sticker.id}`)
       .pipe(
         tap(() => {
           this.fetchData();
@@ -52,7 +53,7 @@ export class StickersService {
   }
   private fetchData(): void {
     this.http
-      .get<ISticker[]>('http://localhost:3000/stickers')
+      .get<ISticker[]>(`${BACKEND_URl}/stickers`)
       .pipe(
         retry({
           count: 2,

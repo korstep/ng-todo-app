@@ -10,6 +10,7 @@ import {
 } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ITask } from 'src/app/core/interfaces/task.interface';
+import { BACKEND_URl } from '@constants';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +30,7 @@ export class TasksService {
 
   addTask(task: Omit<ITask, 'id'>): void {
     this.http
-      .post('http://localhost:3000/tasks', task)
+      .post(`${BACKEND_URl}/tasks`, task)
       .pipe(
         tap(() => this.fetchTasks()),
         catchError((err) => {
@@ -43,7 +44,7 @@ export class TasksService {
 
   private fetchTasks(): void {
     this.http
-      .get<ITask[]>('http://localhost:3000/tasks')
+      .get<ITask[]>(`${BACKEND_URl}/tasks`)
       .pipe(
         retry({
           count: 2,
