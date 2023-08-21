@@ -23,6 +23,7 @@
     "paths": {
       "@interfaces/*": ["src/app/core/interfaces/*"],
       "@layouts/*": ["src/app/layouts/*"],
+      "@constants": ["src/app/core/constants/"],
       "@ui": ["src/app/shared/ui"]
     }
   },
