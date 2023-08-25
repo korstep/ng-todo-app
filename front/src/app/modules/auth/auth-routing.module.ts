@@ -11,7 +11,7 @@ const routes: Routes = [
     component: AuthComponent,
     children: [
       { path: '', component: GetStartedComponent },
-      { path: 'login', component: SignInComponent },
+      { path: 'signin', component: SignInComponent },
       { path: 'signup', component: SignUpComponent },
     ],
   },
