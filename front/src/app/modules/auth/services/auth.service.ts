@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { BACKEND_URl } from '@constants';
-import { Observable, catchError, map, of } from 'rxjs';
 import { ISuccessfulLoggin } from '@interfaces/auth.interface';
 
 @Injectable({
@@ -10,16 +11,20 @@ import { ISuccessfulLoggin } from '@interfaces/auth.interface';
 })
 export class AuthService {
   private readonly tokenCookieName = 'access_token';
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient, private cookieService: CookieService) {}
+  constructor(private http: HttpClient, private cookieService: CookieService) {
+    this.checkLoginStatus();
+  }
 
-  isUserLogged(): boolean {
-    return this.getAccessToken() !== '';
+  isUserLogged$(): Observable<boolean> {
+    return this.isLoggedInSubject.asObservable();
   }
 
   private setAccessTokenToCookie(token: string): void {
     const expirationDate = new Date();
     expirationDate.setTime(expirationDate.getTime() + 1 * 60 * 60 * 1000);
+    this.isLoggedInSubject.next(true);
     this.cookieService.set(this.tokenCookieName, token, expirationDate);
   }
 
@@ -31,6 +36,10 @@ export class AuthService {
     return (
       response && typeof response === 'object' && 'accessToken' in response
     );
+  }
+
+  private checkLoginStatus(): void {
+    this.isLoggedInSubject.next(this.getAccessToken() !== '');
   }
 
   signin(email: string, password: string): Observable<boolean> {
@@ -48,7 +57,7 @@ export class AuthService {
           return false;
         }),
         catchError((error) => {
-          return of(error);
+          return of(false);
         })
       );
   }
@@ -68,12 +77,16 @@ export class AuthService {
           return false;
         }),
         catchError((error) => {
-          return of(error);
+          return of(false);
         })
       );
   }
+  deleteteAccessTokenFromCookie() {
+    this.cookieService.delete(this.tokenCookieName);
+    this.isLoggedInSubject.next(false);
+  }
 
   signout(): void {
-    this.cookieService.delete(this.tokenCookieName);
+    this.deleteteAccessTokenFromCookie();
   }
 }
