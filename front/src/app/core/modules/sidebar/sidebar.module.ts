@@ -8,6 +8,7 @@ import { ListModule, ButtonModule, TasksModule } from '@ui';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ListComponent } from './components/list/list.component';
+import { LayoutsModule } from 'src/app/shared/layouts/layouts.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ListComponent } from './components/list/list.component';
     ListModule,
     ButtonModule,
     TasksModule,
+    LayoutsModule,
   ],
 })
 export class SidebarModule {}

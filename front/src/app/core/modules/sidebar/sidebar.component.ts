@@ -1,4 +1,5 @@
 import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { AuthService } from '../../../modules/auth/services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,16 +9,22 @@ import { Component, ElementRef, Renderer2 } from '@angular/core';
 export class SidebarComponent {
   isOpen: boolean = true;
 
-  constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
+  constructor(
+    private renderer: Renderer2,
+    private elementRef: ElementRef,
+    private AuthService: AuthService
+  ) {}
 
   toggleIsOpen(): void {
     this.isOpen = !this.isOpen;
 
-    // Проверяем значение isOpen и добавляем или удаляем класс close у хост-элемента
     if (!this.isOpen) {
       this.renderer.addClass(this.elementRef.nativeElement, 'close');
     } else {
       this.renderer.removeClass(this.elementRef.nativeElement, 'close');
     }
+  }
+  handleSignout(): void {
+    this.AuthService.signout();
   }
 }
