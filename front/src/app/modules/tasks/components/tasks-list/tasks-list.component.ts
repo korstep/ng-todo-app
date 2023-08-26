@@ -1,24 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TasksService } from '../../services/tasks.service';
 import { ITask } from 'src/app/core/interfaces/task.interface';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tasks-list',
   templateUrl: './tasks-list.component.html',
   styleUrls: ['./tasks-list.component.scss'],
 })
-export class TasksListComponent implements OnInit {
+export class TasksListComponent implements OnInit, OnDestroy {
   private tasks: ITask[] = [];
   private selectedList: number | undefined;
   filteredTasks: ITask[] = [];
+  private tasksSubscription!: Subscription;
   constructor(
     private tasksService: TasksService,
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit() {
-    this.tasksService.getAll().subscribe((tasks) => {
+  ngOnInit(): void {
+    this.tasksSubscription = this.tasksService.getAll().subscribe((tasks) => {
       this.tasks = tasks;
       this.updateFilteredTasks();
     });
@@ -37,6 +39,11 @@ export class TasksListComponent implements OnInit {
       );
     } else {
       this.filteredTasks = this.tasks;
+    }
+  }
+  ngOnDestroy(): void {
+    if (this.tasksSubscription) {
+      this.tasksSubscription.unsubscribe();
     }
   }
 }
