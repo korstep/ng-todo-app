@@ -5,9 +5,9 @@ import { TasksRoutingModule } from './tasks-routing.module';
 import { TasksComponent } from './tasks.component';
 import { TasksListComponent } from './components/tasks-list/tasks-list.component';
 import { TaskComponent } from './components/task/task.component';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { ListModule, ButtonModule } from '@ui';
 import { AddTaskButtonComponent } from './components/add-task-button/add-task-button.component';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { AddTaskButtonComponent } from './components/add-task-button/add-task-bu
   imports: [
     CommonModule,
     TasksRoutingModule,
-    SharedModule,
+    PipesModule,
     ListModule,
     ButtonModule,
   ],
