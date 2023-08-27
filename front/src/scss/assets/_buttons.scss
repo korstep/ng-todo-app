@@ -6,3 +6,11 @@
   border-radius: 8px;
   padding: 15px;
 }
+@mixin cancel-button {
+  @include text;
+  color: $text-accented;
+  background-color: transparent;
+  border: 1px solid #ebebeb;
+  border-radius: 8px;
+  padding: 15px;
+}
