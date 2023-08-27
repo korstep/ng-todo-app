@@ -1,0 +1,11 @@
+@mixin common-input {
+  width: 100%;
+  padding: 12px 8px;
+  border-radius: 8px;
+  border: 1px solid $background-common;
+}
+
+@mixin common-input-error {
+  border: 1px solid $error;
+  box-shadow: 0 0 6px rgba($error, 0.5);
+}
