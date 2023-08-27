@@ -27,7 +27,8 @@ export class TasksListComponent implements OnInit, OnDestroy {
     this.subscribeOnList();
   }
   subscribeOnList() {
-    this.route.params.subscribe((params) => {
+    this.route.queryParams.subscribe((params) => {
+      console.log(params);
       this.selectedList = Number(params['list']);
       this.updateFilteredTasks();
     });

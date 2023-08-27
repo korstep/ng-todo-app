@@ -30,6 +30,8 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   navigateToList() {
-    this.router.navigate(['/tasks', this.list.id]);
+    this.router.navigate(['/tasks'], {
+      queryParams: { list: this.list.id },
+    });
   }
 }

@@ -3,8 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { TasksComponent } from './tasks.component';
 
 const routes: Routes = [
-  { path: '', component: TasksComponent },
-  { path: ':list', component: TasksComponent },
+  {
+    path: '',
+    component: TasksComponent,
+  },
 ];
 
 @NgModule({
