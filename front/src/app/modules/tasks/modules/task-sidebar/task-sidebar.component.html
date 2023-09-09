@@ -1,0 +1,59 @@
+<app-sidebar-layout>
+  <ng-container header>
+    <div class="aside__header">
+      <h2>Task:</h2>
+      <svg
+        (click)="close()"
+        class="aside__close"
+        style="
+          width: 20px;
+          height: 20px;
+          overflow: visible;
+          opacity: 1;
+          z-index: 1;
+          fill: rgb(124, 124, 124);
+          --darkreader-inline-fill: #9a9184;
+        "
+        data-darkreader-inline-fill=""
+        viewBox="0 0 352 512"
+      >
+        <path
+          d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+        ></path>
+      </svg>
+    </div>
+  </ng-container>
+  <ng-container main>
+    <form class="aside__main aside__form">
+      <input
+        class="aside__input"
+        type="text"
+        name="title"
+        id="title"
+        placeholder="Renew driver's license"
+      />
+      <textarea
+        class="aside__input"
+        type="text"
+        name="description"
+        id="description"
+        placeholder="Description"
+        rows="4"
+      ></textarea>
+      <div class="aside__form-group">
+        <label for="list">List</label>
+        <select name="list" id="list"></select>
+      </div>
+    </form>
+  </ng-container>
+  <ng-container footer>
+    <div class="aside__foter">
+      <button class="aside__button aside__button_delete" type="submit">
+        Delete Task
+      </button>
+      <button class="aside__button aside__button_save" type="submit">
+        Save changes
+      </button>
+    </div>
+  </ng-container>
+</app-sidebar-layout>

@@ -8,6 +8,7 @@ import { TaskComponent } from './components/task/task.component';
 import { ListModule, ButtonModule } from '@ui';
 import { AddTaskButtonComponent } from './components/add-task-button/add-task-button.component';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';
+import { TaskSidebarModule } from './modules/task-sidebar/task-sidebar.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
     PipesModule,
     ListModule,
     ButtonModule,
+    TaskSidebarModule,
   ],
 })
 export class TasksModule {}

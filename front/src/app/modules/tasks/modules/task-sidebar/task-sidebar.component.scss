@@ -1,0 +1,35 @@
+@import "styles";
+:host {
+  width: 40%;
+}
+.aside {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__main {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    flex: 1;
+  }
+  &__foter {
+    display: flex;
+    column-gap: 25px;
+  }
+  &__button {
+    width: 50%;
+  }
+  &__button_save {
+    @include accept-button;
+  }
+  &__button_delete {
+    @include cancel-button;
+  }
+  &__input {
+    @include common-input;
+    background-color: transparent;
+    max-width: 100%;
+    min-width: 100%;
+  }
+}
