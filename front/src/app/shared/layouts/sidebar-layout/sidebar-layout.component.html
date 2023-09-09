@@ -1,7 +1,7 @@
 <aside class="aside" [ngClass]="{ aside_transparent: !background }">
   <div class="aside__body">
-    <div class="aside__header"><ng-content select="[header]"></ng-content></div>
-    <div class="aside__main"><ng-content select="[main]"></ng-content></div>
+    <ng-content select="[header]"></ng-content>
+    <ng-content select="[main]"></ng-content>
     <ng-content select="[footer]"></ng-content>
   </div>
 </aside>
