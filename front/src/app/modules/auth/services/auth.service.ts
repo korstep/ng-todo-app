@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { BACKEND_URl } from '@constants';
 import { ISuccessfulLoggin } from '@interfaces/auth.interface';
@@ -42,7 +42,7 @@ export class AuthService {
     this.isLoggedInSubject.next(this.getAccessToken() !== '');
   }
 
-  signin(email: string, password: string): Observable<boolean> {
+  signin(email: string, password: string): Observable<boolean | string> {
     return this.http
       .post<ISuccessfulLoggin>(`${BACKEND_URl}/signin`, {
         email: email,
@@ -54,15 +54,16 @@ export class AuthService {
             this.setAccessTokenToCookie(response.accessToken);
             return true;
           }
-          return false;
+          return 'Something went wrong';
         }),
         catchError((error) => {
-          return of(false);
+          const errorMessage = error.error || 'An error occurred';
+          return throwError(errorMessage);
         })
       );
   }
 
-  signup(email: string, password: string): Observable<boolean> {
+  signup(email: string, password: string): Observable<boolean | string> {
     return this.http
       .post<ISuccessfulLoggin>(`${BACKEND_URl}/signup`, {
         email: email,
@@ -74,10 +75,11 @@ export class AuthService {
             this.setAccessTokenToCookie(response.accessToken);
             return true;
           }
-          return false;
+          return 'Something went wrong';
         }),
         catchError((error) => {
-          return of(false);
+          const errorMessage = error.error || 'An error occurred';
+          return throwError(errorMessage);
         })
       );
   }

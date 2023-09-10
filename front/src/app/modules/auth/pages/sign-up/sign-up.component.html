@@ -8,7 +8,8 @@
       [passwordControl]="passwordControl"
       [submitted]="submitted"
     ></app-input-password>
-    <button class="signup__button" type="submit">Sign in</button>
+    <span *ngIf="error" class="signup__error">{{ error }}</span>
+    <button class="signup__button" type="submit">Sign up</button>
   </form>
   <ng-container footer>
     <a routerLink="/signin">Don't have an account? Sign in</a>

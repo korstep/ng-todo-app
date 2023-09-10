@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class SignInComponent implements OnDestroy {
   title: string = 'Sign in';
+  error: string = '';
   signInForm!: FormGroup;
   emailFormControl!: FormControl;
   passwordControl: FormControl;
@@ -37,10 +38,7 @@ export class SignInComponent implements OnDestroy {
           this.signInForm.controls['password'].value
         )
         .subscribe({
-          next: () => {},
-          error: (error) => {
-            console.error(error);
-          },
+          error: (e) => (this.error = e),
         });
     }
     this.submitted = true;

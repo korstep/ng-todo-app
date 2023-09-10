@@ -8,6 +8,7 @@
       [passwordControl]="passwordControl"
       [submitted]="submitted"
     ></app-input-password>
+    <span *ngIf="error" class="signin">{{ error }}</span>
     <button class="signin__button" type="submit">Sign in</button>
   </form>
   <ng-container footer>
